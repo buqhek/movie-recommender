@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#Stop on all errors, print outputs
+set -Eeuo pipefail
+# set -x
+
+if [ -d "env" ] && [ -d "dataset-ml-32m" ]; then
+    echo "🎉 No need to download the dataset or create the virtual environment. You're already set up!"
+    exit 1
+fi
+
+if [ -d env ]; then
+    echo "env already exists"
+else 
+    # Create python environment
+    echo "Creating Python virtual environment..."
+    python3 -m venv env
+
+    # Activate the python environment
+    echo "Activating environment and installing dependencies..."
+    source env/bin/activate
+    pip install -r requirements.txt
+fi
+
+if [ -d dataset-ml-32m ]; then
+    echo "dataset already exists"
+else 
+    echo "Downloading dataset..."
+    DATA_URL="https://files.grouplens.org/datasets/movielens/ml-latest-small.zip"
+    ZIP_FILE="dataset-ml-32m.zip"
+
+    curl -L "$DATA_URL" -o "$ZIP_FILE"
+
+    echo "Unzipping dataset..."
+    unzip -q "$ZIP_FILE" -d dataset-ml-32m
+
+    echo "Cleaning up..."
+    rm "$ZIP_FILE"
+fi
+
+
+
+
