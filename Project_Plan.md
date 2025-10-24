@@ -29,8 +29,8 @@ The goal is to understand the complete workflow of a data science project — fr
   - [x] Average rating by genre
   - [x] Number of ratings per movie
 - [x] Explore:
-  - [ ] Most common genres
-  - [ ] Highest rated movies
+  - [x] Most common genres
+  - [x] Highest rated movies
   - [ ] Patterns in user behavior
 
 🧠 *Exploration Zone:*  

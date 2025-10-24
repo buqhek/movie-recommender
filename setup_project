@@ -39,13 +39,7 @@ else
 
     echo "Cleaning up..."
     rm -rf data/ml-latest-small
-    rm "$ZIP_FILE"
-
 
     echo "Cleaning up..."
     rm "$ZIP_FILE"
 fi
-
-
-
-
