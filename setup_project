@@ -22,7 +22,7 @@ else
     pip install -r requirements.txt
 fi
 
-if [ -d dataset-ml-32m ]; then
+if [ -d data ]; then
     echo "dataset already exists"
 else 
     echo "Downloading dataset..."
@@ -32,7 +32,15 @@ else
     curl -L "$DATA_URL" -o "$ZIP_FILE"
 
     echo "Unzipping dataset..."
-    unzip -q "$ZIP_FILE" -d dataset-ml-32m
+    unzip -q "$ZIP_FILE" -d data
+
+    echo "Moving dataset files..."
+    mv data/ml-latest-small/* data/
+
+    echo "Cleaning up..."
+    rm -rf data/ml-latest-small
+    rm "$ZIP_FILE"
+
 
     echo "Cleaning up..."
     rm "$ZIP_FILE"
