@@ -1,4 +1,5 @@
 env/
 dataset-ml-32m/
+data/
 *.csv
 *.zip

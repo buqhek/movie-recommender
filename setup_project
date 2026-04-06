@@ -26,7 +26,7 @@ if [ -d data ]; then
     echo "dataset already exists"
 else 
     echo "Downloading dataset..."
-    DATA_URL="https://files.grouplens.org/datasets/movielens/ml-latest-small.zip"
+    DATA_URL="https://files.grouplens.org/datasets/movielens/ml-32m.zip"
     ZIP_FILE="dataset-ml-32m.zip"
 
     curl -L "$DATA_URL" -o "$ZIP_FILE"
@@ -35,14 +35,10 @@ else
     unzip -q "$ZIP_FILE" -d data
 
     echo "Moving dataset files..."
-    mv data/ml-latest-small/* data/
+    mv data/ml-32m/* data/
 
     echo "Cleaning up..."
-    rm -rf data/ml-latest-small
-    rm "$ZIP_FILE"
-
-
-    echo "Cleaning up..."
+    rm -rf data/ml-32m
     rm "$ZIP_FILE"
 fi
 
